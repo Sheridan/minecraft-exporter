@@ -9,7 +9,7 @@ import requests
 import json
 import nbt
 import re
-import pprint
+# import pprint
 import argparse
 from mcrcon import MCRcon
 from os import listdir
@@ -107,7 +107,7 @@ class MinecraftCollector(object):
                 if value["done"] == True:
                     count += 1
         data['stats']['minecraft:custom']["advancements:advancements_done"] = count
-        pprint.pprint(data)
+        # pprint.pprint(data)
         return data
 
     def extract_name(self, value):
