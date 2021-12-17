@@ -34,7 +34,7 @@ class MinecraftCollector(object):
         parser.add_argument("-e", "--exporter-port", help="Exporter port to listen", default=9010)
 
         self.args = parser.parse_args()
-        print(self.args)
+        # print(self.args)?
 
     def get_players(self):
         return [f[:-5] for f in listdir(self.directoryes['stats']) if isfile(join(self.directoryes['stats'], f))]
