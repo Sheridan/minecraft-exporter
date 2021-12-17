@@ -1,711 +1,1447 @@
 {
-  "__inputs": [
+    "annotations":
     {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "6.4.3"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "singlestat",
-      "name": "Singlestat",
-      "version": ""
-    }
-  ],
-  "annotations": {
-    "list": [
-      {
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
-  },
-  "editable": true,
-  "gnetId": null,
-  "graphTooltip": 0,
-  "id": null,
-  "iteration": 1572099073069,
-  "links": [],
-  "panels": [
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 0
-      },
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
+        "list": [
         {
-          "expr": "sum(blocks_mined{player=\"$player\"}) by (block)",
-          "legendFormat": "{{block}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Blocks mined",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
+            "builtIn": 1,
+            "datasource": "-- Grafana --",
+            "enable": true,
+            "hide": true,
+            "iconColor": "rgba(0, 211, 255, 1)",
+            "name": "Annotations & Alerts",
+            "target":
+            {
+                "limit": 100,
+                "matchAny": false,
+                "tags": [],
+                "type": "dashboard"
+            },
+            "type": "dashboard"
+        }]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": null,
+    "graphTooltip": 2,
+    "id": 49,
+    "iteration": 1639735907584,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "thresholds"
+                },
+                "decimals": 2,
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "dtdurations"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 4,
+            "w": 6,
+            "x": 0,
+            "y": 0
+        },
+        "id": 15,
+        "options":
+        {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "auto",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "lastNotNull"
+                ],
+                "fields": "",
+                "values": true
+            },
+            "text":
+            {},
+            "textMode": "value_and_name"
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=~\".*time.*\", player=\"$player\"}",
+            "format": "time_series",
+            "instant": true,
+            "interval": "$step",
+            "legendFormat": "{{ metric }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Times",
+        "type": "stat"
+    },
+    {
+        "cacheTimeout": null,
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "thresholds"
+                },
+                "mappings": [
+                {
+                    "options":
+                    {
+                        "match": "null",
+                        "result":
+                        {
+                            "text": "N/A"
+                        }
+                    },
+                    "type": "special"
+                }],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "none"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 4,
+            "w": 2,
+            "x": 6,
+            "y": 0
+        },
+        "id": 6,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options":
+        {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "fields": "",
+                "values": false
+            },
+            "text":
+            {},
+            "textMode": "auto"
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"jump\",player=\"$player\"}",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Jumps",
+        "type": "stat"
+    },
+    {
+        "cacheTimeout": null,
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "thresholds"
+                },
+                "mappings": [
+                {
+                    "options":
+                    {
+                        "match": "null",
+                        "result":
+                        {
+                            "text": "N/A"
+                        }
+                    },
+                    "type": "special"
+                }],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "none"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 4,
+            "w": 1,
+            "x": 8,
+            "y": 0
+        },
+        "id": 5,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options":
+        {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "fields": "",
+                "values": false
+            },
+            "text":
+            {},
+            "textMode": "auto"
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"deaths\",player=\"$player\"}",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Deaths",
+        "type": "stat"
+    },
+    {
+        "cacheTimeout": null,
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "thresholds"
+                },
+                "mappings": [
+                {
+                    "options":
+                    {
+                        "match": "null",
+                        "result":
+                        {
+                            "text": "N/A"
+                        }
+                    },
+                    "type": "special"
+                }],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "none"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 4,
+            "w": 1,
+            "x": 17,
+            "y": 0
+        },
+        "id": 9,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options":
+        {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "fields": "",
+                "values": false
+            },
+            "text":
+            {},
+            "textMode": "auto"
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"xplevel\",player=\"$player\"}",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Level",
+        "type": "stat"
+    },
+    {
+        "cacheTimeout": null,
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "thresholds"
+                },
+                "mappings": [
+                {
+                    "options":
+                    {
+                        "match": "null",
+                        "result":
+                        {
+                            "text": "N/A"
+                        }
+                    },
+                    "type": "special"
+                }],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "none"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 4,
+            "w": 1,
+            "x": 18,
+            "y": 0
+        },
+        "id": 11,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options":
+        {
+            "colorMode": "none",
+            "graphMode": "none",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "mean"
+                ],
+                "fields": "",
+                "values": false
+            },
+            "text":
+            {},
+            "textMode": "auto"
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"xptotal\",player=\"$player\"}",
+            "instant": true,
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "XP",
+        "type": "stat"
+    },
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "bars",
+                    "fillOpacity": 4,
+                    "gradientMode": "hue",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineStyle":
+                    {
+                        "fill": "solid"
+                    },
+                    "lineWidth": 1,
+                    "pointSize": 4,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "spanNulls": 600000,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "normal"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "short"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 0,
+            "y": 4
+        },
+        "id": 2,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "displayMode": "hidden",
+                "placement": "right"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_mined{player=\"$player\"}[$interval]) > 0",
+            "interval": "$step",
+            "legendFormat": "{{ item }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Blocks mined",
+        "type": "timeseries"
+    },
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "bars",
+                    "fillOpacity": 4,
+                    "gradientMode": "hue",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 2,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "spanNulls": 600000,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "normal"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "short"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 6,
+            "y": 4
+        },
+        "id": 4,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "displayMode": "hidden",
+                "placement": "right"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_picked_up{player=\"$player\"}[$interval]) > 0",
+            "interval": "$step",
+            "legendFormat": "{{ item }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Blocks collected",
+        "type": "timeseries"
+    },
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "bars",
+                    "fillOpacity": 4,
+                    "gradientMode": "opacity",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "spanNulls": 600000,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "normal"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "short"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 12,
+            "y": 4
+        },
+        "id": 3,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [
+                    "last"
+                ],
+                "displayMode": "hidden",
+                "placement": "right"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_crafted{player=\"$player\"}[$interval]) > 0",
+            "interval": "$step",
+            "legendFormat": "{{ item }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "items crafted",
+        "type": "timeseries"
+    },
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "line",
+                    "fillOpacity": 10,
+                    "gradientMode": "none",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "spanNulls": true,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "none"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "lengthm"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 18,
+            "y": 4
+        },
+        "id": 7,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [],
+                "displayMode": "hidden",
+                "placement": "bottom"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_custom{metric=~\".*one_cm\",player=\"$player\"}[$interval]) / 1000",
+            "interval": "$step",
+            "legendFormat": "{{  metric }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Meters travelled",
+        "type": "timeseries"
+    },
+    {
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "bars",
+                    "fillOpacity": 3,
+                    "gradientMode": "none",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 2,
+                    "pointSize": 5,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "auto",
+                    "spanNulls": false,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "normal"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                }
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 0,
+            "y": 20
+        },
+        "id": 8,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [],
+                "displayMode": "hidden",
+                "placement": "bottom"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_killed{player=\"$player\"}[$interval]) > 0",
+            "interval": "$step",
+            "legendFormat": "{{ entity }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Mobs killed",
+        "type": "timeseries"
+    },
+    {
+        "cacheTimeout": null,
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
+        {
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "line",
+                    "fillOpacity": 0,
+                    "gradientMode": "none",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "spanNulls": false,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "none"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "area"
+                    }
+                },
+                "mappings": [
+                {
+                    "options":
+                    {
+                        "match": "null",
+                        "result":
+                        {
+                            "text": "N/A"
+                        }
+                    },
+                    "type": "special"
+                }],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "red",
+                        "value": null
+                    },
+                    {
+                        "color": "#EAB839",
+                        "value": 12
+                    },
+                    {
+                        "color": "green",
+                        "value": 18
+                    },
+                    {
+                        "color": "#6ED0E0",
+                        "value": 21
+                    }]
+                },
+                "unit": "none"
+            },
+            "overrides": []
+        },
+        "gridPos":
+        {
+            "h": 16,
+            "w": 6,
+            "x": 6,
+            "y": 20
+        },
+        "id": 10,
+        "interval": null,
+        "links": [],
+        "maxDataPoints": 100,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [],
+                "displayMode": "hidden",
+                "placement": "bottom"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"health\",player=\"$player\"}",
+            "instant": false,
+            "interval": "$step",
+            "legendFormat": "Health",
+            "refId": "A"
         },
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+            "exemplar": true,
+            "expr": "minecraft_player_custom{metric=\"foodlevel\",player=\"$player\"}",
+            "hide": false,
+            "interval": "$step",
+            "legendFormat": "Food",
+            "refId": "B"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Health",
+        "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 0
-      },
-      "id": 3,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
+        "datasource": "Home main Prometheus",
+        "fieldConfig":
         {
-          "expr": "sum(blocks_crafted{player=\"$player\"}) by (block)",
-          "legendFormat": "{{block}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "items crafted",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "axisLabel": "",
+                    "axisPlacement": "auto",
+                    "barAlignment": 0,
+                    "drawStyle": "bars",
+                    "fillOpacity": 10,
+                    "gradientMode": "none",
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    },
+                    "lineInterpolation": "linear",
+                    "lineWidth": 1,
+                    "pointSize": 5,
+                    "scaleDistribution":
+                    {
+                        "type": "linear"
+                    },
+                    "showPoints": "never",
+                    "spanNulls": true,
+                    "stacking":
+                    {
+                        "group": "A",
+                        "mode": "none"
+                    },
+                    "thresholdsStyle":
+                    {
+                        "mode": "off"
+                    }
+                },
+                "links": [],
+                "mappings": [],
+                "thresholds":
+                {
+                    "mode": "absolute",
+                    "steps": [
+                    {
+                        "color": "green",
+                        "value": null
+                    },
+                    {
+                        "color": "red",
+                        "value": 80
+                    }]
+                },
+                "unit": "short"
+            },
+            "overrides": []
         },
+        "gridPos":
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+            "h": 18,
+            "w": 6,
+            "x": 12,
+            "y": 20
+        },
+        "id": 12,
+        "options":
+        {
+            "legend":
+            {
+                "calcs": [],
+                "displayMode": "hidden",
+                "placement": "bottom"
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "pluginVersion": "8.2.4",
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "increase(minecraft_player_custom{metric=~\"damage.*\", player=\"$player\"}[$interval]) > 0",
+            "interval": "$step",
+            "legendFormat": "{{  metric }}",
+            "refId": "A"
+        }],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Damage",
+        "type": "timeseries"
     },
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 9
-      },
-      "id": 4,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
+        "datasource": null,
+        "fieldConfig":
         {
-          "expr": "sum(blocks_picked_up{player=\"$player\"}) by (block)",
-          "legendFormat": "{{block}}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Blocks collected",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
+            "defaults":
+            {
+                "color":
+                {
+                    "mode": "palette-classic"
+                },
+                "custom":
+                {
+                    "hideFrom":
+                    {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                    }
+                },
+                "mappings": []
+            },
+            "overrides": []
         },
+        "gridPos":
         {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
+            "h": 18,
+            "w": 6,
+            "x": 18,
+            "y": 20
+        },
+        "id": 14,
+        "options":
+        {
+            "displayLabels": [
+                "name",
+                "value"
+            ],
+            "legend":
+            {
+                "displayMode": "hidden",
+                "placement": "bottom"
+            },
+            "pieType": "pie",
+            "reduceOptions":
+            {
+                "calcs": [
+                    "lastNotNull"
+                ],
+                "fields": "",
+                "values": false
+            },
+            "tooltip":
+            {
+                "mode": "multi"
+            }
+        },
+        "targets": [
+        {
+            "exemplar": true,
+            "expr": "minecraft_player_killed_by{player=\"$player\"}",
+            "interval": "",
+            "legendFormat": "{{ entity }}",
+            "refId": "A"
+        }],
+        "title": "Killed by",
+        "type": "piechart"
+    }],
+    "refresh": "5s",
+    "schemaVersion": 32,
+    "style": "dark",
+    "tags": [
+        "minecraft"
+    ],
+    "templating":
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "${DS_PROMETHEUS}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 5,
-        "x": 12,
-        "y": 9
-      },
-      "id": 5,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
+        "list": [
         {
-          "name": "value to text",
-          "value": 1
+            "allValue": null,
+            "current":
+            {
+                "selected": true,
+                "text": [
+                    "capitan_Sheridan"
+                ],
+                "value": [
+                    "capitan_Sheridan"
+                ]
+            },
+            "datasource": "Home main Prometheus",
+            "definition": "label_values(blocks_mined,player)",
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "includeAll": true,
+            "label": null,
+            "multi": true,
+            "name": "player",
+            "options": [],
+            "query":
+            {
+                "query": "label_values(blocks_mined,player)",
+                "refId": "Home main Prometheus-player-Variable-Query"
+            },
+            "refresh": 2,
+            "regex": "",
+            "skipUrlSync": false,
+            "sort": 0,
+            "tagValuesQuery": "",
+            "tagsQuery": "",
+            "type": "query",
+            "useTags": false
         },
         {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
+            "auto": false,
+            "auto_count": 30,
+            "auto_min": "10s",
+            "current":
+            {
+                "selected": false,
+                "text": "5m",
+                "value": "5m"
+            },
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "label": null,
+            "name": "interval",
+            "options": [
+            {
+                "selected": false,
+                "text": "15s",
+                "value": "15s"
+            },
+            {
+                "selected": false,
+                "text": "30s",
+                "value": "30s"
+            },
+            {
+                "selected": false,
+                "text": "1m",
+                "value": "1m"
+            },
+            {
+                "selected": true,
+                "text": "5m",
+                "value": "5m"
+            },
+            {
+                "selected": false,
+                "text": "10m",
+                "value": "10m"
+            },
+            {
+                "selected": false,
+                "text": "30m",
+                "value": "30m"
+            },
+            {
+                "selected": false,
+                "text": "1h",
+                "value": "1h"
+            },
+            {
+                "selected": false,
+                "text": "2h",
+                "value": "2h"
+            },
+            {
+                "selected": false,
+                "text": "6h",
+                "value": "6h"
+            },
+            {
+                "selected": false,
+                "text": "12h",
+                "value": "12h"
+            },
+            {
+                "selected": false,
+                "text": "1d",
+                "value": "1d"
+            }],
+            "query": "15s,30s,1m,5m,10m,30m,1h,2h,6h,12h,1d",
+            "queryValue": "",
+            "refresh": 2,
+            "skipUrlSync": false,
+            "type": "interval"
+        },
         {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "sum(player_deaths{player=\"$player\"})",
-          "instant": true,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Deaths",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+            "auto": false,
+            "auto_count": 30,
+            "auto_min": "10s",
+            "current":
+            {
+                "selected": false,
+                "text": "10m",
+                "value": "10m"
+            },
+            "description": null,
+            "error": null,
+            "hide": 0,
+            "label": null,
+            "name": "step",
+            "options": [
+            {
+                "selected": false,
+                "text": "15s",
+                "value": "15s"
+            },
+            {
+                "selected": false,
+                "text": "30s",
+                "value": "30s"
+            },
+            {
+                "selected": false,
+                "text": "1m",
+                "value": "1m"
+            },
+            {
+                "selected": false,
+                "text": "5m",
+                "value": "5m"
+            },
+            {
+                "selected": true,
+                "text": "10m",
+                "value": "10m"
+            },
+            {
+                "selected": false,
+                "text": "30m",
+                "value": "30m"
+            },
+            {
+                "selected": false,
+                "text": "1h",
+                "value": "1h"
+            },
+            {
+                "selected": false,
+                "text": "2h",
+                "value": "2h"
+            },
+            {
+                "selected": false,
+                "text": "6h",
+                "value": "6h"
+            },
+            {
+                "selected": false,
+                "text": "12h",
+                "value": "12h"
+            },
+            {
+                "selected": false,
+                "text": "1d",
+                "value": "1d"
+            }],
+            "query": "15s,30s,1m,5m,10m,30m,1h,2h,6h,12h,1d",
+            "queryValue": "",
+            "refresh": 2,
+            "skipUrlSync": false,
+            "type": "interval"
+        }]
     },
+    "time":
     {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": false,
-      "colors": [
-        "#299c46",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "${DS_PROMETHEUS}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 5,
-        "x": 17,
-        "y": 9
-      },
-      "id": 6,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "options": {},
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "expr": "player_jumps{player=\"$player\"}",
-          "instant": true,
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Jumps",
-      "type": "singlestat",
-      "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "avg"
+        "from": "now-24h",
+        "to": "now"
     },
+    "timepicker":
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 18
-      },
-      "id": 7,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "cm_traveled{player=\"$player\"} / 1000",
-          "legendFormat": "{{  method }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Meters travelled",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "lengthm",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ]
     },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 18
-      },
-      "id": 8,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "entities_killed{player=\"$player\"}",
-          "legendFormat": "{{ entity }}",
-          "refId": "A"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Mobs killed",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    }
-  ],
-  "refresh": false,
-  "schemaVersion": 20,
-  "style": "dark",
-  "tags": [],
-  "templating": {
-    "list": [
-      {
-        "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
-        "definition": "label_values(blocks_mined,player)",
-        "hide": 0,
-        "includeAll": false,
-        "label": null,
-        "multi": false,
-        "name": "player",
-        "options": [],
-        "query": "label_values(blocks_mined,player)",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
-      }
-    ]
-  },
-  "time": {
-    "from": "now-6h",
-    "to": "now"
-  },
-  "timepicker": {
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ]
-  },
-  "timezone": "",
-  "title": "minecraft Player stats",
-  "uid": "gAy914AZk",
-  "version": 8
+    "timezone": "",
+    "title": "Minecraft stats",
+    "uid": "gAy914AZk",
+    "version": 18
 }
